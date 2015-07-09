@@ -22,18 +22,25 @@ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main
 
 sudo apt-key adv --sudo apt-key adv --keyserver hkp://pool.sks-keyservers.net --recv-key 0xB01FA116
 
-echo "Getting ROS Jade"
+echo "Updating Repo information"
+sudo apt-get update
 
+echo "Getting ROS Jade Dekstop-Full"
 sudo apt-get install ros-jade-desktop-full
 
+echo "inititializing rosdep"
 sudo rosdep init
+echo "Updating rosdep"
 rosdep update
 
-echo "source /opt/ros/jade/setup.bash" >> ~/.bashrc
+echo "Adding ROS Jade to Source"
+echo "source /opt/ros/jade/setup.bash" 
+>> ~/.bashrc
 source ~/.bashrc
 
 source /opt/ros/jade/setup.bash
 
+echo "Installing rosinstall for python"
 sudo apt-get install python-rosinstall
 
 
