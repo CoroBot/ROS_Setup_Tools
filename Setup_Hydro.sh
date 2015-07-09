@@ -21,6 +21,9 @@ clear
 #Setup your Sources
 echo "ROS Hydro is not officially supported on Ubuntu Trusty. That said, it runs very well and CoroWare Robotics is supporting running Hydro on Trusty"
 
+echo "Installing the dependencies"
+sudo apt-get install python-pip
+
 ##Need to update to have user feedback and confirmation dialogs
 
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
