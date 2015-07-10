@@ -11,20 +11,26 @@
 # Ver: 0.1
 # Plat: Ubuntu 14.04
 
+ESC_SEQ='\x1b['
+COL_RESET=$ESC_SEQ"39;49;00m"
+COL_RED=$ESC_SEQ"31;01m"
+COL_CYAN=$ESC_SEQ"36;01m"
+COL_GREEN=$ESC_SEQ"32;01m"
+
 Ver="0.1"
 
-echo -n "
-
+echo -n -e "
+$COL_RED
 Welcome to the CoroBot ROS Hydro Setup Utility Ver (Insert Version Var) by CoroWare Robotics Solutions. 
 
-In order to continue the installation process, please review the permissions, warnings, tea leaves, magic eight balls, and license agreement. 
-
+In order to continue the installation process, please review the permissions, warnings, tea leaves, magic eight balls, and license agreement.
+$COL_RESET
 Please, press ENTER to continue
 
 >>>"
     read dummy
     more <<EOF
-
+$COL_CYAN
 ==============================
 CoroBot ROS Hydro Setup Information
 ==============================
@@ -33,7 +39,7 @@ Becasue ROS Hydro is not fully supported by the OSRF to run on Ubuntu 14.04, to 
 This shell script follows the general directions for installing ROS Hydro on Ubuntu 14.04 as outlined @ http://wiki.ros.org/hydro/Installation/Trusty
 
 Before installing ROS Hydro, this script also installs some of the following dependencies and tools that are required for installing ROS Hydro
-
+$COL_RESET
 -System updates (sudo apt-get update && sudo apt-get upgrade)
 -Pip: Python package manager.
 
@@ -51,14 +57,17 @@ Are you ready to install? [yes|no]
 	exit 2
     fi
 
-    echo -n "
+    echo -n -e "
+    $COL_GREEN
 The CoroBot Hydro Installation Setup tool will begin the installation process
+$COL_RESET
 "
 
 
 #Run System Updates and Upgrades
 
-echo "Updating System and installing system upgrades"
+echo -e $COL_GREEN"Updating System and installing system upgrades"$COL_GREEN
+
 sudo apt-get update && sudo apt-get upgrade -y
 
 ##Install Additional Dependencies that cause issues with 14.04.2
@@ -67,8 +76,9 @@ clear
 
 #Setup your Sources
 
-echo "Installing the dependencies"
-sudo apt-get install python-pip
+echo -e $COL_GREEN "Installing the dependencies" $COL_RESET
+sudo apt-get install -y python-pip
+sudo apt-get install -y svn build-essentials mercurial 
 
 ##Need to update to have user feedback and confirmation dialogs
 
@@ -78,12 +88,13 @@ sudo apt-key adv --keyserver hkp://pool.sks-keyservers.net --recv-key 0xB01FA116
 
 sudo add-apt-repository ppa:openrave/release
 
+echo -e $COL_GREEN "Running REPO Updates"$COL_RESET
 sudo apt-get update
-sudo apt-get install -y git svn mercurial python-pip build-essential
+sudddo apt-get install -y git svn mercurial python-pip build-essential
 sudo pip install -U rosdep rosinstall_generator wstool rosinstall catkin_tools
 sudo rosdep init
 rosdep update
-
+echo -e $COL_CYAN "Creating ROS HYDRO directory in your HOME DIR"$COL_RESET
 mkdir -p ~/ros_hydro
 cd ~/ros_hydro
 
