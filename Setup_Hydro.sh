@@ -26,11 +26,11 @@ Welcome to the CoroBot ROS Hydro Setup Utility Ver (Insert Version Var) by CoroW
 In order to continue the installation process, please review the permissions, warnings, tea leaves, magic eight balls, and license agreement.
 $COL_RESET
 Please, press ENTER to continue
-
+$COL_CYAN
 >>>"
     read dummy
     more <<EOF
-$COL_CYAN
+
 ==============================
 CoroBot ROS Hydro Setup Information
 ==============================
@@ -39,14 +39,13 @@ Becasue ROS Hydro is not fully supported by the OSRF to run on Ubuntu 14.04, to 
 This shell script follows the general directions for installing ROS Hydro on Ubuntu 14.04 as outlined @ http://wiki.ros.org/hydro/Installation/Trusty
 
 Before installing ROS Hydro, this script also installs some of the following dependencies and tools that are required for installing ROS Hydro
-$COL_RESET
+
 -System updates (sudo apt-get update && sudo apt-get upgrade)
 -Pip: Python package manager.
 
-
-
 EOF
-    echo -n"
+
+echo -e $COL_RED"
 Are you ready to install? [yes|no]
 [Proceeed at your own risk...] >>>"
     read ans
