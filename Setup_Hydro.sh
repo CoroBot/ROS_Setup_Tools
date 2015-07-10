@@ -63,9 +63,9 @@ diff -u hydro-desktop-full-wet.rosinstall hydro-desktop-full-wet.rosinstall.old
 wstool merge -t src hydro-desktop-full-wet.rosinstall
 wstool update -t src
 
-catkinbuild
+catkin build
 
-soure ~/ros_hydro/install_isolated/setup.bash
+source ~/ros_hydro/install_isolated/setup.bash
 
 
 
