@@ -44,7 +44,8 @@ EOF
 Are you ready to install? [yes|no]
 [Proceeed at your own risk...] >>>"
     read ans
-    if [[ ($ans != "yes") && ($ans != "Yes") && ($ans != "YES") && ($ans !="y") && ($ans != "Y") ]]
+    if [[ ($ans != "yes") && ($ans != "Yes") && ($ans != "YES") &&
+	    ($ans != "y") && ($ans != "Y") ]]
     then
         echo "Aborting the installation process..."
 	exit 2
