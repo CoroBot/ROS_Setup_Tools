@@ -76,8 +76,7 @@ clear
 
 echo -e $COL_GREEN "Installing the dependencies" $COL_RESET
 sudo apt-get install -y python-pip
-sudo apt-get install -y svn build-essentials mercurial vim emacs screen
-
+sudo apt-get install -y subversion build-essential mercurial vim emacs screen checkinstall
 echo -e $COL_RED "Getting OpenCV and Installing... Because it's AWESOME"
 
 $COL_RESET
