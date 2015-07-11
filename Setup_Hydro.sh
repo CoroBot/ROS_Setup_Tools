@@ -16,6 +16,7 @@ COL_RESET=$ESC_SEQ"39;49;00m"
 COL_RED=$ESC_SEQ"31;01m"
 COL_CYAN=$ESC_SEQ"36;01m"
 COL_GREEN=$ESC_SEQ"32;01m"
+COL_WHITE=$ESC_SEQ"37;01m"
 
 Ver="0.1"
 
@@ -65,7 +66,7 @@ $COL_RESET
 
 #Run System Updates and Upgrades
 
-echo -e $COL_GREEN"Updating System and installing system upgrades"$COL_GREEN
+echo -e $COL_GREEN"Updating System and installing system upgrades"$COL_RESTE
 
 sudo apt-get update && sudo apt-get upgrade -y
 
@@ -75,8 +76,11 @@ clear
 
 
 echo -e $COL_GREEN "Installing the dependencies" $COL_RESET
+
 sudo apt-get install -y python-pip
 sudo apt-get install -y subversion build-essential mercurial vim emacs screen checkinstall
+
+clear
 echo -e $COL_RED "Getting OpenCV and Installing... Because it's AWESOME"
 
 $COL_RESET
@@ -112,7 +116,7 @@ sudo add-apt-repository ppa:openrave/release
 
 echo -e $COL_GREEN "Running REPO Updates"$COL_RESET
 sudo apt-get update
-sudddo apt-get install -y git svn mercurial python-pip build-essential
+sudo apt-get install -y git svn mercurial python-pip build-essential
 sudo pip install -U rosdep rosinstall_generator wstool rosinstall catkin_tools
 sudo rosdep init
 rosdep update
