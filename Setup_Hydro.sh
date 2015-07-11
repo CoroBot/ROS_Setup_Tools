@@ -82,8 +82,7 @@ sudo apt-get install -y subversion build-essential mercurial vim emacs screen ch
 
 clear
 echo -e $COL_RED "Getting OpenCV and Installing... Because it's AWESOME"
-
-$COL_RESET
+echo -e $COL_WHITE
 version="$(wget -q -O - http://sourceforge.net/projects/opencvlibrary/files/opencv-unix | egrep -m1 -o '\"[0-9](\.[0-9]+)+' | cut -c2-)"
 echo "Installing OpenCV" $version
 mkdir OpenCV
