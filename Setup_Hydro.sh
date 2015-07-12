@@ -22,7 +22,7 @@ Ver="0.1"
 
 echo -n -e "
 $COL_RED
-Welcome to the CoroBot ROS Hydro Setup Utility Ver (Insert Version Var) by CoroWare Robotics Solutions. 
+Welcome to the CoroBot ROS Hydro Setup Utility $Ver by CoroWare Robotics Solutions. 
 
 In order to continue the installation process, please review the permissions, warnings, tea leaves, magic eight balls, and license agreement.
 $COL_RESET
@@ -107,48 +107,6 @@ echo "OpenCV" $version "ready to be used"
 
 ##Need to update to have user feedback and confirmation dialogs
 
-sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-
-sudo apt-key adv --keyserver hkp://pool.sks-keyservers.net --recv-key 0xB01FA116
-
-sudo add-apt-repository ppa:openrave/release
-
-echo -e $COL_GREEN "Running REPO Updates"$COL_RESET
-sudo apt-get update
-sudo apt-get install -y git svn mercurial python-pip build-essential
-sudo pip install -U rosdep rosinstall_generator wstool rosinstall catkin_tools
-sudo rosdep init
-rosdep update
-echo -e $COL_CYAN "Creating ROS HYDRO directory in your HOME DIR"$COL_RESET
-mkdir -p ~/ros_hydro
-cd ~/ros_hydro
-
-rosinstall_generator desktop_full --rosdistro hydro --deps --wet-only --tar > hydro-desktop-full-wet.rosinstall
-
-wstool init -j8 src hydro-desktop-full-wet.rosinstall
-
-sudo apt-get install -y $(rosdep install --from-paths src --ignore-src --rosdistro hydro -y -s | sed '/^#/d' | sed ':a;N;$!ba;s/\n/ /g' | sed 's/sudo apt-get install -y/ /g')
-
-rosdep install --from-paths src --ignore-src --rosdistro hydro -y
-
-catkin config --install --cmake-args -DCMAKE_BUILD_TYPE=Release
-
-catkin build
-
-source ~/ros_hydro/install/setup.bash
-
-mv -i hydro-desktop-full-wet.rosinstall hydro-desktop-full-wet.rosinstall.old
-
-rosinstall_generator desktop_full --rosdistro hydro --deps --wet-only --tar > hydro-desktop-full-wet.rosinstall
-
-diff -u hydro-desktop-full-wet.rosinstall hydro-desktop-full-wet.rosinstall.old
-wstool merge -t src hydro-desktop-full-wet.rosinstall
-wstool update -t src
-
-catkin build
-
-source ~/ros_hydro/install_isolated/setup.bash
-
-
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu 
 
 
