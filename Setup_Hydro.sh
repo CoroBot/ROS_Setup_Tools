@@ -78,7 +78,8 @@ clear
 echo -e $COL_GREEN "Installing the dependencies" $COL_RESET
 
 sudo apt-get install -y python-pip
-sudo apt-get install -y subversion build-essential mercurial vim emacs screen checkinstall python-rosdep python-rosinstall-generator python-wstool python-rosinstall
+clear 
+sudo apt-get install subversion build-essential mercurial vim emacs screen checkinstall python-rosdep python-rosinstall-generator python-wstool python-rosinstall
 
 sudo rosdep init
 rosdep update
