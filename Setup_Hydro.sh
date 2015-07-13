@@ -115,7 +115,7 @@ echo -e "$COL_GREEN Updating Repo Information and Upgrading for good Measure"
 sudo apt-get update && sudo apt-get upgrade -y
 clear
 echo -e "$COL_RED Updating again for good measure.."
-sudo apt-get udpate && sudo apt-get upgrade -y
+sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install python-rosdep python-rosinstall-generator python-wstool python-rosinstall build-essential
 sudo apt-get update
 sudo rosdep init
