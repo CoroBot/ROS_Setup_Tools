@@ -79,11 +79,7 @@ echo -e $COL_GREEN "Installing the dependencies" $COL_RESET
 
 sudo apt-get install -y python-pip
 clear 
-sudo apt-get install subversion build-essential mercurial vim emacs screen checkinstall python-rosdep python-rosinstall-generator python-wstool python-rosinstall
-
-sudo rosdep init
-rosdep update
-
+sudo apt-get install subversion build-essential mercurial vim emacs screen checkinstall 
 clear
 echo -e $COL_RED "Getting OpenCV and Installing... Because it's AWESOME"
 echo -e $COL_WHITE
@@ -115,7 +111,11 @@ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu trusty main" > /etc/apt
 echo -e -n "$COL_GREEN Updating repo information" 
 $COL_WHITE
 sudo apt-get update
-
+clear
+echo -e "$COL_RED Updating again for good measure.."
+sudo apt-get udpate && sudo apt-get upgrade -y
+sudo apt-get install python-rosddep python-rosinstall-generator python-wstool python-rosinstall build-essential
+sudo apt-get update
 sudo rosdep init
 rosdep update
 
