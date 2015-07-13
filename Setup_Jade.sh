@@ -113,5 +113,15 @@ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main
 
 sudo apt-key adv --keyserver hkp://pool.sks-keyservers.net --recv-key 0xB01FA116
 
-OS_VERSION=lsb_release
+sudo apt-get update
 
+OS_NUMBER="($lsb_release -r)"
+
+sudo apt-get install ros-jade-desktop-full
+
+sudo rosdep init
+rosdep update
+echo "source /opt/ros/jade/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+
+sudo apt-get install python-rosinstall
