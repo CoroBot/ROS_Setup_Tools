@@ -108,9 +108,11 @@ echo "OpenCV" $version "ready to be used"
 ##Need to update to have user feedback and confirmation dialogs
 
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu trusty main" > /etc/apt/sources.list.d/ros-latest.list'
-echo -e -n "$COL_GREEN Updating repo information" 
 $COL_WHITE
-sudo apt-get update
+echo -e "$COL_RED Getting Verification Key"
+wget https://raw.githubusercontent.com/ros/rodistro/master/ros.key -O - | sudo apt-key add -
+echo -e "$COL_GREEN Updating Repo Information and Upgrading for good Measure"
+sudo apt-get udpate && sudo apt-get upgrade -y
 clear
 echo -e "$COL_RED Updating again for good measure.."
 sudo apt-get udpate && sudo apt-get upgrade -y
