@@ -78,7 +78,10 @@ clear
 echo -e $COL_GREEN "Installing the dependencies" $COL_RESET
 
 sudo apt-get install -y python-pip
-sudo apt-get install -y subversion build-essential mercurial vim emacs screen checkinstall
+sudo apt-get install -y subversion build-essential mercurial vim emacs screen checkinstall python-rosdep python-rosinstall-generator python-wstool python-rosinstall
+
+sudo rosdep init
+rosdep update
 
 clear
 echo -e $COL_RED "Getting OpenCV and Installing... Because it's AWESOME"
@@ -111,9 +114,6 @@ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu trusty main" > /etc/apt
 echo -e -n "$COL_GREEN Updating repo information" 
 $COL_WHITE
 sudo apt-get update
-
-echo -e -n "$COL_GREEN Getting ROS Hydro Dependencies. $COL_WHITE"
-sudo apt-get install python-rosdep python-rosinstall-generator python-wstool python-rosinstall build-essential
 
 sudo rosdep init
 rosdep update
