@@ -107,6 +107,39 @@ echo "OpenCV" $version "ready to be used"
 
 ##Need to update to have user feedback and confirmation dialogs
 
-sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu 
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu trusty main" > /etc/apt/sources.list.d/ros-latest.list'
+echo -e -n "$COL_GREEN Updating repo information" 
+$COL_WHITE
+sudo apt-get update
 
+echo -e -n "$COL_GREEN Getting ROS Hydro Dependencies. $COL_WHITE"
+sudo apt-get install python-rosdep python-rosinstall-generator python-wstool python-rosinstall build-essential
 
+sudo rosdep init
+rosdep update
+
+mkdir ~/ros_catkin_ws && cd ~/ros_catkin_ws
+
+rosinstall_generator desktop_full --rosdistro hydro --deps --wet-only --tar > hydro-desktop-full-wet.rosinstall
+
+wstool init -j8 src hydro-desktop-full-wet.rosinstall
+
+rosdep install --from-paths src --ignore-src --rosdistro hydro -y
+
+./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release
+
+source ~/ros_catkin_ws/install_isolated/setup.bash
+
+mv -i hydro-desktop-full-wet.rosinstall hydro-desktop-full-wet.rosinstall.old
+
+rosinstall_generator desktop_full --rosdistro hydro --deps --wet-only --tar > hydro-desktop-full-wet.rosinstall
+
+diff -u hydro-desktop-full-wet.rosinstall hydro-desktop-full-wet.rosinstall.old
+
+wstool merge -t src hydro-desktop-full-wet.rosinstall
+
+tool update -t src
+
+./src/catkin/bin/catkin_make_isolated --install
+
+source ~/ros_catkin_ws/install_isolated/setup.bash
