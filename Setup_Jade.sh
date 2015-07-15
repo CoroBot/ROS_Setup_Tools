@@ -123,5 +123,8 @@ sudo rosdep init
 rosdep update
 echo "source /opt/ros/jade/setup.bash" >> ~/.bashrc
 source ~/.bashrc
-
+echo "Double checkling that ROS is added to the source"
+source /opt/ros/jade/setup.bash
 sudo apt-get install python-rosinstall
+
+
