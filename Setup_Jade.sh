@@ -56,7 +56,7 @@ Are you ready to insstall? [yes|no]
 [Proceed at your own risk. It is recommended that you have a back up.] >>>"
 read ans
     if [[ ($ans != "yes") && ($ans != "YES") && ($ans != "Yes") && 
-	 ($ans != "y") && ($ans !="Y") ]]
+	 ($ans != "y") && ($ans != "Y") ]]
 
     then
 	    echo "Aborting the installation process...."
