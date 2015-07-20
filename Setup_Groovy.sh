@@ -13,7 +13,7 @@ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu precise main" > /etc/ap
 
 wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
 sudo apt-get udpate
-sudo apt-get install ros-groovy-desktop-full
+sudo apt-get install ros-groovy-desktop-full -y
 sudo rosdep init
 rosdep update
 echo "source /opt/ros/groovy/setup.bash" >> ~/.bashrc
