@@ -126,5 +126,5 @@ source ~/.bashrc
 echo "Double checkling that ROS is added to the source"
 source /opt/ros/jade/setup.bash
 sudo apt-get install python-rosinstall
-
-
+echo -e "$COL_GREEN Adding"
+echo "source ~/CoroBot_ROS/devel/setup.bash" >> ~/.bashrc
