@@ -126,5 +126,11 @@ source ~/.bashrc
 echo "Double checkling that ROS is added to the source"
 source /opt/ros/jade/setup.bash
 sudo apt-get install python-rosinstall
+<<<<<<< HEAD
 echo -e "$COL_GREEN Adding"
 echo "source ~/CoroBot_ROS/devel/setup.bash" >> ~/.bashrc
+=======
+clear
+echo -e "$COL_GREEN Getting URDF Tools"
+sudo apt-get install liburdfdom-tools
+>>>>>>> b024861ffaf5248539ca1037b685993a34ff66ed
